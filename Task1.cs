@@ -133,49 +133,48 @@ public class Program
 			Console.WriteLine("The CPU has chosen Paper");
 		}
 		System.Threading.Thread.Sleep(300);
-		WIN();
+		WINRPS();
 
 	}
-	static void WIN()
+	static void WINRPS()
 	{
 		string again;
-		Console.WriteLine("Would you like to have a rematch? (y or n)");
+		Console.WriteLine("What would you like to do? Have a rematch (R) Select a new game (S) or quit (Q)");
 		again = Console.ReadLine();
-		if (again.ToLower() == "y")
+		if (again.ToLower() == "r")
 		{
 			Console.Clear();
 			Console.WriteLine("Restarting..");
 			Console.WriteLine("What object would you like to play, Rock (r), Paper (p) or Scissors (s)");
 			RPS();
 		}
-		else if (again.ToLower() == "n")
+		else if (again.ToLower() == "s")
 		{
-			string newgame;
-			Console.WriteLine("Would you like to select a new game? (y or n)");
-			newgame = Console.ReadLine();
-			if (newgame.ToLower() == "y")
-			{
-				Console.Clear();
-				Select();
-			}
-			else
-			{
-				Console.WriteLine("Stopping in 3");
-				System.Threading.Thread.Sleep(1000);
-				Console.WriteLine("Stopping in 2");
-				System.Threading.Thread.Sleep(1000);
-				Console.WriteLine("Stopping in 1");
-				System.Threading.Thread.Sleep(1000);
-			}
+			Console.Clear();
+			Select();
 		}
-		else
+		else if (again.ToLower() == "q")
+		{
+			Console.WriteLine("Stopping in 3");
+			System.Threading.Thread.Sleep(1000);
+			Console.WriteLine("Stopping in 2");
+			System.Threading.Thread.Sleep(1000);
+			Console.WriteLine("Stopping in 1");
+			System.Threading.Thread.Sleep(1000);
+		}
+		else 
 		{
 			Console.WriteLine("Invalid input please try again");
-			WIN();
+			WINRPS();
 		}
 	}
-
+	
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 	public static void TTT() // Tic Tac Toe Code
 	{
@@ -201,11 +200,26 @@ public class Program
 				(grid[0] == grid[1] && grid[1] == grid[2] && grid[0] == "X") || //first row
 				(grid[3] == grid[4] && grid[4] == grid[5] && grid[3] == "X") || //second row
 				(grid[6] == grid[7] && grid[7] == grid[8] && grid[6] == "X"))   // third row
-
+			   
 			{
 				Console.Clear();
 				DRAWGRID(grid);
 				Console.WriteLine("Player 1 Wins!");
+				end = true;
+			}
+			if ((grid[0] == grid[4] && grid[4] == grid[8] && grid[0] == "O") || //left to right diagonal
+				(grid[2] == grid[4] && grid[4] == grid[6] && grid[2] == "O") || //right to left diagonal
+				(grid[0] == grid[3] && grid[3] == grid[6] && grid[0] == "O") || //first column
+				(grid[1] == grid[4] && grid[4] == grid[7] && grid[1] == "O") || //second column
+				(grid[2] == grid[5] && grid[5] == grid[8] && grid[2] == "O") || //third column
+				(grid[0] == grid[1] && grid[1] == grid[2] && grid[0] == "O") || //first row
+				(grid[3] == grid[4] && grid[4] == grid[5] && grid[3] == "O") || //second row
+				(grid[6] == grid[7] && grid[7] == grid[8] && grid[6] == "O"))   // third row
+			   
+			{	
+				Console.Clear();
+				DRAWGRID(grid);
+				Console.WriteLine("Player 2 Wins!");
 				end = true;
 			}
 			else if (grid[0] != "1" && //checks box 1
@@ -227,7 +241,7 @@ public class Program
 			{
 				Console.Clear();
 				P2TURN(grid, end);
-			}
+			} 
 			// check win
 			if ((grid[0] == grid[4] && grid[4] == grid[8] && grid[0] == "O") || //left to right diagonal
 				(grid[2] == grid[4] && grid[4] == grid[6] && grid[2] == "O") || //right to left diagonal
@@ -237,11 +251,26 @@ public class Program
 				(grid[0] == grid[1] && grid[1] == grid[2] && grid[0] == "O") || //first row
 				(grid[3] == grid[4] && grid[4] == grid[5] && grid[3] == "O") || //second row
 				(grid[6] == grid[7] && grid[7] == grid[8] && grid[6] == "O"))   // third row
-
-			{
+			   
+			{	
 				Console.Clear();
 				DRAWGRID(grid);
 				Console.WriteLine("Player 2 Wins!");
+				end = true;
+			}
+			else if ((grid[0] == grid[4] && grid[4] == grid[8] && grid[0] == "X") || //left to right diagonal
+				(grid[2] == grid[4] && grid[4] == grid[6] && grid[2] == "X") || //right to left diagonal
+				(grid[0] == grid[3] && grid[3] == grid[6] && grid[0] == "X") || //first column
+				(grid[1] == grid[4] && grid[4] == grid[7] && grid[1] == "X") || //second column
+				(grid[2] == grid[5] && grid[5] == grid[8] && grid[2] == "X") || //third column
+				(grid[0] == grid[1] && grid[1] == grid[2] && grid[0] == "X") || //first row
+				(grid[3] == grid[4] && grid[4] == grid[5] && grid[3] == "X") || //second row
+				(grid[6] == grid[7] && grid[7] == grid[8] && grid[6] == "X"))   // third row
+			   
+			{
+				Console.Clear();
+				DRAWGRID(grid);
+				Console.WriteLine("Player 1 Wins!");
 				end = true;
 			}
 			else if (grid[0] != "1" && //checks box 1
@@ -260,31 +289,44 @@ public class Program
 				end = true;
 			}
 		}
-		// rematch
-		Console.WriteLine("Would you like to have a rematch? (y or n)");
-		string rematch;
-		rematch = Console.ReadLine();
-		if (rematch.ToLower() == "y")
+		WINTTT();
+	}
+	static void WINTTT()
+	{
+		string again;
+		Console.WriteLine("What would you like to do? Have a rematch (R) Select a new game (S) or quit (Q)");
+		again = Console.ReadLine();
+		if (again.ToLower() == "r")
 		{
 			Console.Clear();
+			Console.WriteLine("Restarting..");
 			TTT();
 		}
-		else
+		else if (again.ToLower() == "s")
 		{
-			Console.WriteLine("Would you like to select another game? (y or n)");
-			string selectback;
-			selectback = Console.ReadLine();
-			if (selectback.ToLower() == "y")
-			{
-				Console.Clear();
-				Select();
-			}
+			Console.Clear();
+			Select();
+		}
+		else if (again.ToLower() == "q")
+		{
+			Console.WriteLine("Stopping in 3");
+			System.Threading.Thread.Sleep(1000);
+			Console.WriteLine("Stopping in 2");
+			System.Threading.Thread.Sleep(1000);
+			Console.WriteLine("Stopping in 1");
+			System.Threading.Thread.Sleep(1000);
+		}
+		else 
+		{
+			Console.WriteLine("Invalid input please try again");
+			WINTTT();
 		}
 	}
-
-
+	
+	
+	
 	// Player One Turn Code
-
+	
 	public static void P1TURN(string[] grid, bool end)
 	{
 		DRAWGRID(grid);
@@ -324,9 +366,9 @@ public class Program
 			P1TURN(grid, end);
 		}
 	}
-
+	
 	// Player Two Turn Code
-
+	
 	public static void P2TURN(string[] grid, bool end)
 	{
 		DRAWGRID(grid);
@@ -373,13 +415,13 @@ public class Program
 	public static void CHECKWIN(bool end, string[] grid)
 	{
 		Console.WriteLine("Half Half Workds");
-		if (grid[0] == grid[4] && grid[4] == grid[8])
+		if (grid[0] == grid[4] && grid[4] == grid [8])
 		{
-			Console.WriteLine("Code Half Works");
+			Console.WriteLine("Code Half Works");	
 			end = true;
 		}
 	}
-
+	
 	//Draws Tic Tac Toe Grid
 	static void DRAWGRID(string[] grid)
 	{
@@ -393,7 +435,7 @@ public class Program
 		Console.WriteLine("  " + grid[6] + "  |  " + grid[7] + "  |  " + grid[8] + "  ");
 		Console.WriteLine("     |     |     ");
 	}
-
+	
 	//Draws Logo
 	static void LOGO()
 	{
