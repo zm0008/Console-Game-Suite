@@ -161,6 +161,7 @@ public class Program
 			System.Threading.Thread.Sleep(1000);
 			Console.WriteLine("Stopping in 1");
 			System.Threading.Thread.Sleep(1000);
+			Environment.Exit()
 		}
 		else 
 		{
@@ -315,6 +316,7 @@ public class Program
 			System.Threading.Thread.Sleep(1000);
 			Console.WriteLine("Stopping in 1");
 			System.Threading.Thread.Sleep(1000);
+			Environment.Exit()
 		}
 		else 
 		{
