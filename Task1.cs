@@ -69,7 +69,7 @@ public class Program
 			}
 			else
 			{
-				Console.WriteLine("Your code dont work dumbass");
+				Console.WriteLine("Error please try again");
 			}
 		}
 		else if (rpschoice.ToLower() == "p")
@@ -90,7 +90,7 @@ public class Program
 			}
 			else
 			{
-				Console.WriteLine("Your code dont work dumbass");
+				Console.WriteLine("Error please try again");
 			}
 		}
 		else if (rpschoice.ToLower() == "s")
@@ -111,7 +111,7 @@ public class Program
 			}
 			else
 			{
-				Console.WriteLine("Your code dont work dumbass");
+				Console.WriteLine("Error please try again");
 			}
 
 		}
